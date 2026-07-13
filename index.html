@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Homepage</title>
+<meta name="description" content="Student portfolio and academic management site for Alex Carter, Computer Science student.">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand">Hudhaifah Muhammad-Qazeem
+      <span class="id-line">STUDENT ID: 301849671</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav">Menu ☰</button>
+    <ul class="folder-nav" id="mainNav">
+      <li><a href="index.html" aria-current="page">Home</a></li>
+      <li><a href="about.html">About Me</a></li>
+      <li><a href="project.html">Projects</a></li>
+      <li><a href="planner.html">Academic Planner</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <!-- ============ HERO / OPEN STUDENT FILE ============ -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="photo-frame" aria-hidden="false" tabindex="0" role="button" aria-label="Upload student photo">
+        <img class="student-photo" src="./images/student.svg" alt="Portrait of Hudhaifah Muhammad-Qazeem">
+        <span class="initials">HM</span>
+        <input type="file" id="photo-upload" accept="image/png,image/jpeg" hidden>
+        <span class="upload-hint">Click to upload photo</span>
+      </div>
+      <div class="hero-text">
+        <h1>Hi, I'm Hudhaifah Muhammad-Qazeem.</h1>
+        <p class="welcome">I'm a Software Engineering student at MIVA Open University with a passion for designing and developing innovative software solutions. I enjoy learning new technologies, building user-friendly web applications, and solving real-world problems through programming. This portfolio showcases my academic projects, technical skills, and achievements as I continue to grow into a professional software engineer committed to continuous learning and excellence.</p>
+        <div class="btn-row">
+          <a href="project.html" class="btn btn-primary">View my projects</a>
+          <a href="planner.html" class="btn btn-ghost">Open academic planner</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal-overlay" id="upload-modal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <h2 id="modal-title">Upload error</h2>
+      <p id="modal-message">File not accepted. Please upload PNG or JPEG only.</p>
+      <button type="button" id="modal-close" class="btn btn-primary">OK</button>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <!-- ============ BRIEF BIOGRAPHY ============ -->
+    <section class="section" id="bio">
+      <span class="eyebrow">Brief Biography</span>
+      <h2>A little about my academic story</h2>
+      <div class="grid-2">
+        <div>
+          <p>A little about my academic journey
+
+I'm currently studying Software Engineering at MIVA Open University, where I'm learning to design, build, and maintain software solutions that address real-world challenges. I enjoy creating practical web applications, exploring new technologies, and finding better ways to solve problems through code.
+
+Outside of my studies, I enjoy learning by building projects and experimenting with new tools and frameworks. This portfolio is more than a collection of coursework it's a reflection of my progress, the skills I'm developing, and my commitment to becoming a capable and innovative software engineer.
+
+This version feels authentic, professional, and well-suited for a university portfolio without sounding overly formal.</p>
+        </div>
+        <div class="card">
+          <h3>Quick Facts</h3>
+          <ul>
+            <li>Program: B.Sc. Software Engineering</li>
+            <li>Year: First Year</li>
+            <li>Focus: Full Stack Web Developer</li>
+            <li>Based in: Osun State, Nigeria</li>
+            <li>Find more on the <a href="about.html">About Me</a> page</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>&copy; 2026 Hudhaifah Muhammad-Qazeem · Built for COS 106, Introduction to Web Technologies · </a></p>
+</footer>
+
+<script src="./script.js"></script>
+</body>
+</html>
