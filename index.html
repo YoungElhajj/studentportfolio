@@ -29,11 +29,8 @@
   <!-- ============ HERO / OPEN STUDENT FILE ============ -->
   <section class="hero">
     <div class="hero-inner">
-      <div class="photo-frame" aria-hidden="false" tabindex="0" role="button" aria-label="Upload student photo">
-        <img class="student-photo" src="./images/student.svg" alt="Portrait of Hudhaifah Muhammad-Qazeem">
-        <span class="initials">HM</span>
-        <input type="file" id="photo-upload" accept="image/png,image/jpeg" hidden>
-        <span class="upload-hint">Click to upload photo</span>
+      <div class="photo-frame" aria-hidden="false">
+        <img class="student-photo" src="./images/photo_2026-07-12_19-02-06.jpg" alt="">
       </div>
       <div class="hero-text">
         <h1>Hi, I'm Hudhaifah Muhammad-Qazeem.</h1>
@@ -46,13 +43,7 @@
     </div>
   </section>
 
-  <div class="modal-overlay" id="upload-modal" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <h2 id="modal-title">Upload error</h2>
-      <p id="modal-message">File not accepted. Please upload PNG or JPEG only.</p>
-      <button type="button" id="modal-close" class="btn btn-primary">OK</button>
-    </div>
-  </div>
+  <!-- Upload modal removed: photos are now served as static files in /images/ -->
 
   <div class="wrap">
     <!-- ============ BRIEF BIOGRAPHY ============ -->

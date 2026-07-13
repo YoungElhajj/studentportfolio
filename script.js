@@ -412,93 +412,26 @@
 })();
 
 
+// Photo uploads removed: use a static image file in /images/ for consistent public display.
 (function () {
-  var photoFrame = document.querySelector('.photo-frame');
-  var photoInput = document.getElementById('photo-upload');
   var studentPhoto = document.querySelector('.student-photo');
   var initials = document.querySelector('.initials');
-  var STORAGE_KEY = 'student-photo-dataurl';
+  if (!studentPhoto) return;
 
-  if (!photoFrame || !photoInput || !studentPhoto) return;
+  // Attempt to load a repository-stored profile image. If it's missing,
+  // fall back to the included `student.svg`. This keeps the image fixed
+  // for everyone (not stored per-browser).
+  var preferred = (studentPhoto.getAttribute('src') && studentPhoto.getAttribute('src').trim()) || './images/profile.jpg';
+  var fallback = './images/student.svg';
 
-  function setPhoto(dataUrl) {
-    studentPhoto.src = dataUrl || './images/student.svg';
-    if (dataUrl) {
-      photoFrame.classList.add('has-photo');
-      if (initials) {
-        initials.style.opacity = '0';
-      }
-    } else {
-      photoFrame.classList.remove('has-photo');
-      if (initials) {
-        initials.style.opacity = '1';
-      }
-    }
-  }
-
-  var modalOverlay = document.getElementById('upload-modal');
-  var modalClose = document.getElementById('modal-close');
-
-  function showModal(message) {
-    if (!modalOverlay) return;
-    var messageEl = modalOverlay.querySelector('#modal-message');
-    if (messageEl) {
-      messageEl.textContent = message;
-    }
-    modalOverlay.classList.add('show');
-    modalOverlay.setAttribute('aria-hidden', 'false');
-    modalClose.focus();
-  }
-
-  function hideModal() {
-    if (!modalOverlay) return;
-    modalOverlay.classList.remove('show');
-    modalOverlay.setAttribute('aria-hidden', 'true');
-    photoFrame.focus();
-  }
-
-  function handleFile(file) {
-    if (!file) return;
-    var allowedTypes = ['image/png', 'image/jpeg'];
-    if (allowedTypes.indexOf(file.type) === -1) {
-      showModal('File not accepted. Please upload a PNG or JPEG image.');
-      photoInput.value = '';
-      return;
-    }
-
-    var reader = new FileReader();
-    reader.addEventListener('load', function () {
-      var dataUrl = reader.result;
-      setPhoto(dataUrl);
-      localStorage.setItem(STORAGE_KEY, dataUrl);
-    });
-    reader.readAsDataURL(file);
-  }
-
-  if (modalClose) {
-    modalClose.addEventListener('click', hideModal);
-  }
-
-  photoFrame.addEventListener('click', function () {
-    photoInput.click();
-  });
-
-  photoFrame.addEventListener('keydown', function (event) {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      photoInput.click();
-    }
-  });
-
-  photoInput.addEventListener('change', function () {
-    var file = photoInput.files && photoInput.files[0];
-    if (file) {
-      handleFile(file);
-    }
-  });
-
-  var savedPhoto = localStorage.getItem(STORAGE_KEY);
-  if (savedPhoto) {
-    setPhoto(savedPhoto);
-  }
+  var probe = new Image();
+  probe.onload = function () {
+    studentPhoto.src = preferred;
+    if (initials) initials.style.opacity = '0';
+  };
+  probe.onerror = function () {
+    studentPhoto.src = fallback;
+    if (initials) initials.style.opacity = studentPhoto.src ? '0' : '1';
+  };
+  probe.src = preferred;
 })();
